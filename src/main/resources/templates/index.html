@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>设备管理系统</title>
+	<script type="text/javascript">
+		function refresh() {
+			document.getElementById('captcha_img').src="/kaptcha?"+Math.random();
+		}
+	</script>
+	<link rel="icon" href="/favicon.ico">
+	<!-- Bootstrap core CSS -->
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="@{/css/signin.css}" rel="stylesheet">
+</head>
+
+<body>
+<div class="text-center" style="margin: 100px auto">
+
+	<form class="form-signin" th:action="@{/user/login}">
+		<img class="mb-4" th:src="@{/img/bootstrap-solid.jpg}"  >
+		<p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+		<input type="text" name="username" class="form-control" th:placeholder="#{login.username}" style="width: 400px;margin-left: auto;margin-right: auto">
+		<input type="password" name="password" class="form-control" th:placeholder="#{login.password}" style="width: 400px;margin-left: auto;margin-right: auto">
+
+		<input type="text" name="verifyCodeActual" class="form-control" th:placeholder="#{login.verify}" style=" width: 289px;position: relative;left: -55px;margin: auto">
+
+		<div class="item-input" style="width: 120px;height: 50px;margin: auto;position: relative;top:-39px;right: -145px">
+			<img id="captcha_img" alt="点击更换" title="点击更换"
+				 onclick="refresh()" src="/kaptcha" />
+		</div>
+		<div class="checkbox mb-3">
+			<label>
+				<input type="checkbox" value="remember-me"> [[#{login.remember}]]
+			</label>
+		</div>
+		<form action="/hello" method="post">
+
+			<button class="btn btn-lg btn-primary btn-block" type="submit" style="width: 400px;margin-left: auto;margin-right: auto" th:text="#{login.btn}">Sign in</button>
+		</form>
+		<!--			<button class="btn btn-lg btn-primary btn-block" type="submit" style="width: 400px;margin-left: auto;margin-right: auto" th:text="#{login.btn}">Sign in</button>-->
+		<p class="mt-5 mb-3 text-muted">© 2020-2021</p>
+		<a class="btn btn-sm" th:href="@{/index.html(l='zh_CN')}">中文</a>
+		<a class="btn btn-sm" th:href="@{/index.html(l='en_US')}">English</a>
+	</form>
+</div>
+</body>
+
+</html>

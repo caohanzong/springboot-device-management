@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chz.mapper.BorrowerMapper">
+
+    <select id="queryBorrowerList" resultType="Borrower">
+        select * from easy.borrower;
+    </select>
+
+    <select id="queryBorrowerById" resultType="Borrower">
+        select * from easy.borrower where id = #{id}
+    </select>
+
+    <insert id="addBorrower" parameterType="Borrower">
+        insert into easy.borrower(id,borrowerName)
+        values (#{id},#{borrowerName})
+    </insert>
+
+</mapper>

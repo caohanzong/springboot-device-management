@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.chz.mapper.EquipMapper">
+    <select id="queryEquipList" resultType="Equip">
+        select * from easy.equip;
+    </select>
+
+    <select id="queryEquipById" resultType="Equip">
+        select * from easy.equip where id = #{id};
+    </select>
+    
+    <insert id="addEquip" parameterType="Equip">
+        insert into easy.equip(name,serial,state,borrower,date)
+        values (#{name},#{serial},#{state},#{borrower},#{date})
+    </insert>
+
+    <update id="updateEquip" parameterType="Equip">
+        update easy.equip set name=#{name},serial=#{serial},state=#{state},borrower=#{borrower},date=#{date}
+        where id=#{id}
+    </update>
+
+    <delete id="deleteEquip" parameterType="Equip">
+        delete from easy.equip where id = #{id}
+    </delete>
+</mapper>
