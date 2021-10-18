@@ -1,4 +1,4 @@
 # 表示类型是Java
-*.js linguist-language=Java
-*.css linguist-language=Java
+# *.js linguist-language=Java
+# *.css linguist-language=Java
 *.html linguist-language=Java
